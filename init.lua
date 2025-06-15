@@ -973,18 +973,18 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  -- require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'plugins.git', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
@@ -1010,6 +1010,26 @@ require('lazy').setup({
       lazy = '💤 ',
     },
   },
+})
+
+vim.keymap.set('n', '<C-`>', ':split | terminal<CR>', { noremap = true, silent = true })
+-- cd to opened directory
+vim.api.nvim_create_autocmd('VimEnter', {
+  pattern = '*',
+  callback = function()
+    -- Get args directly from vim.v.argv
+    local args = vim.v.argv
+    -- Check if the dir argument is provided
+    print(#args)
+    if #args >= 3 then
+      local dir = args[3]
+
+      -- Check if the argument is a directory
+      if vim.fn.isdirectory(dir) == 1 then
+        vim.cmd.cd(dir)
+      end
+    end
+  end,
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
