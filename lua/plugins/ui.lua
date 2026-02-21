@@ -11,6 +11,10 @@ return {
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
       },
+      files = {
+        ignored = true,
+        hidden = true,
+      },
       picker = {
         ignored = true,
         hidden = true,
@@ -19,10 +23,11 @@ return {
           -- "node_modules",
         },
         sources = {
-          explorer = {
-            -- your explorer picker configuration comes here
-            -- or leave it empty to use the default settings
-          },
+          files = { ignored = true, hidden = true },
+          explorer = { ignored = true, hidden = true },
+          grep = { ignored = true, hidden = true },
+          grep_word = { ignored = true, hidden = true },
+          grep_buffers = { ignored = true, hidden = true },
         },
       },
     },
