@@ -115,7 +115,7 @@ vim.o.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
+  -- vim.o.clipboard = 'unnamedplus'
 end)
 
 -- Enable break indent
@@ -956,6 +956,10 @@ require('lazy').setup({
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
+      ignore_install = {
+        -- interferes with vimtex
+        'latex',
+      },
     },
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
@@ -963,6 +967,9 @@ require('lazy').setup({
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  },
+  {
+    'nvim-treesitter/nvim-treesitter-context',
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
@@ -1040,3 +1047,8 @@ vim.o.expandtab = true -- expand tab input with spaces characters
 vim.o.smartindent = true -- syntax aware indentations for newline inserts
 vim.o.tabstop = 2 -- num of space characters per tab
 vim.o.shiftwidth = 2 -- spaces per indentation level
+
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'v:lua.vim.lsp.foldexpr()'
+vim.o.foldenable = false
+vim.opt.foldlevel = 99
