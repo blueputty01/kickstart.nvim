@@ -2,7 +2,7 @@ return {
   -- The same equation snippet, using LuaSnip's fmt function.
   -- The snippet is not shorter, but it is more *human-readable*.
   s(
-    { trig = '([^%a])eq', regTrig = true, dscr = 'A LaTeX equation environment', snippetType = 'autosnippet' },
+    { trig = '^eq', regTrig = true, dscr = 'A LaTeX equation environment', snippetType = 'autosnippet' },
     fmt( -- The snippet code actually looks like the equation environment it produces.
       [[
       \begin{equation}
@@ -15,22 +15,9 @@ return {
       { delimiters = '<>' }
     )
   ),
-  -- \frac
-  s(
-    { trig = '([^%a])ff', regTrig = true, dscr = "Expands 'ff' into '\frac{}{}'", snippetType = 'autosnippet' },
-    fmt(
-      '\\frac{<>}{<>}',
-      {
-        i(1),
-        i(2),
-      },
-      { delimiters = '<>' } -- manually specifying angle bracket delimiters
-    )
-  ),
-
   -- Code for environment snippet
   s(
-    { trig = '([^%a])env', regTrig = true, snippetType = 'autosnippet' },
+    { trig = '^env ', regTrig = true, snippetType = 'autosnippet' },
     fmta(
       [[
       \begin{<>}
@@ -46,7 +33,7 @@ return {
   ),
 
   s(
-    { trig = '([^%a])iz', regTrig = true, snippetType = 'autosnippet' },
+    { trig = '^iz ', regTrig = true, snippetType = 'autosnippet' },
     fmta(
       [[
       \begin{itemize}
@@ -60,7 +47,7 @@ return {
   ),
 
   s(
-    { trig = '([^%a]|^)ez', regTrig = true, snippetType = 'autosnippet' },
+    { trig = '^ez ', regTrig = true, snippetType = 'autosnippet' },
     fmta(
       [[
       \begin{enumerate}
@@ -73,5 +60,19 @@ return {
     )
   ),
 
-  s({ trig = '(%w)*\\-', regTrig = true, snippetType = 'autosnippet' }, t 'item'),
+  s({ trig = '^(%w*)%- ', regTrig = true, snippetType = 'autosnippet' }, t '\\item'),
+
+  s(
+    { trig = '^`py', regTrig = true, snippetType = 'autosnippet' },
+    fmta(
+      [[
+      \begin{lstlisting}[language=Python]
+      <>
+      \end{lstlisting}
+    ]],
+      {
+        i(1),
+      }
+    )
+  ),
 }
