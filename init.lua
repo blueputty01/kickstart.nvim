@@ -807,7 +807,13 @@ require('lazy').setup({
           --   end,
           -- },
         },
-        opts = {},
+        config = function()
+          require('luasnip.loaders.from_lua').load { paths = '~/.config/kickstart.nvim/lua/snippets/' }
+          require('luasnip').config.set_config {
+            enable_autosnippets = true,
+            store_selection_keys = '<Tab>',
+          }
+        end,
       },
       'folke/lazydev.nvim',
     },
@@ -1028,7 +1034,6 @@ vim.api.nvim_create_autocmd('VimEnter', {
     -- Get args directly from vim.v.argv
     local args = vim.v.argv
     -- Check if the dir argument is provided
-    print(#args)
     if #args >= 3 then
       local dir = args[3]
 
