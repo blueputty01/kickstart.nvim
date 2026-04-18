@@ -1,3 +1,5 @@
+local config_path = vim.fn.stdpath 'config'
+
 --[[
 
 =====================================================================
@@ -1065,3 +1067,10 @@ vim.o.foldmethod = 'expr'
 vim.o.foldexpr = 'v:lua.vim.lsp.foldexpr()'
 vim.o.foldenable = false
 vim.opt.foldlevel = 99
+
+vim.keymap.set('v', 'Y', '"+y', { desc = 'Copy selected text to system clipboard' })
+
+vim.opt.spell = true
+vim.opt.spelllang = { 'en_us' }
+vim.opt.spelloptions:append 'camel'
+vim.opt.spellfile = config_path .. '/spell/en.utf-8.add'
