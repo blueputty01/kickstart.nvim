@@ -17,10 +17,30 @@ return {
     })
   ),
   s(
-    { trig = 'sum', condition = in_mathzone, snippetType = 'autosnippet' },
+    { trig = '\\min', condition = in_mathzone, snippetType = 'autosnippet' },
+    fmta('\\min_{<>}\\left\\{<>\\right\\}', {
+      i(1),
+      i(2),
+    })
+  ),
+  s(
+    { trig = '\\max', condition = in_mathzone, snippetType = 'autosnippet' },
+    fmta('\\max_{<>}\\left\\{<>\\right\\}', {
+      i(1),
+      i(2),
+    })
+  ),
+  s(
+    { trig = '\\sum', condition = in_mathzone, snippetType = 'autosnippet' },
     fmta('\\sum_{<>}^{<>}', {
       i(1),
       i(2),
+    })
+  ),
+  s(
+    { trig = '|', condition = in_mathzone, snippetType = 'autosnippet' },
+    fmta('|<>|', {
+      i(1),
     })
   ),
   s(
@@ -38,9 +58,6 @@ return {
   }),
   s({ trig = ';g', snippetType = 'autosnippet' }, {
     t '\\gamma',
-  }),
-  s({ trig = ';all', snippetType = 'autosnippet' }, {
-    t '\\forall',
   }),
   s({ trig = ';R', snippetType = 'autosnippet' }, {
     t '\\mathbb{R}',
@@ -72,4 +89,5 @@ return {
       i(2),
     })
   ),
+  s({ trig = '%^th', condition = in_mathzone, snippetType = 'autosnippet' }, t '^\\text{th}'),
 }

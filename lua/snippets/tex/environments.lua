@@ -2,7 +2,7 @@ return {
   -- The same equation snippet, using LuaSnip's fmt function.
   -- The snippet is not shorter, but it is more *human-readable*.
   s(
-    { trig = '^eq', regTrig = true, dscr = 'A LaTeX equation environment', snippetType = 'autosnippet' },
+    { trig = '^(%s*)eq', regTrig = true, dscr = 'A LaTeX equation environment', snippetType = 'autosnippet' },
     fmt( -- The snippet code actually looks like the equation environment it produces.
       [[
       \begin{equation}
@@ -17,7 +17,7 @@ return {
   ),
   -- Code for environment snippet
   s(
-    { trig = '^env ', regTrig = true, snippetType = 'autosnippet' },
+    { trig = '^(%s*)env', regTrig = true, snippetType = 'autosnippet' },
     fmta(
       [[
       \begin{<>}
@@ -33,7 +33,21 @@ return {
   ),
 
   s(
-    { trig = '^iz ', regTrig = true, snippetType = 'autosnippet' },
+    { trig = '^(%s*)cases', regTrig = true, snippetType = 'autosnippet' },
+    fmta(
+      [[
+      \begin{cases}
+          <>
+      \end{cases}
+    ]],
+      {
+        i(1),
+      }
+    )
+  ),
+
+  s(
+    { trig = '^(%s*)i%-', regTrig = true, snippetType = 'autosnippet' },
     fmta(
       [[
       \begin{itemize}
@@ -47,7 +61,7 @@ return {
   ),
 
   s(
-    { trig = '^ez ', regTrig = true, snippetType = 'autosnippet' },
+    { trig = '^(%s*)e%-', regTrig = true, snippetType = 'autosnippet' },
     fmta(
       [[
       \begin{enumerate}
@@ -60,16 +74,31 @@ return {
     )
   ),
 
-  s({ trig = '^(%w*)%- ', regTrig = true, snippetType = 'autosnippet' }, t '\\item'),
+  s({ trig = '^(%s*)%- ', regTrig = true, snippetType = 'autosnippet' }, t '\\item'),
 
   s(
-    { trig = '^`py', regTrig = true, snippetType = 'autosnippet' },
+    { trig = '^(%s*)``py', regTrig = true, snippetType = 'autosnippet' },
     fmta(
       [[
-      \begin{lstlisting}[language=Python]
+      \begin{lstlisting}[language=Python,mathescape=true]
       <>
       \end{lstlisting}
     ]],
+      {
+        i(1),
+      }
+    )
+  ),
+
+  s(
+    { trig = '^(%s*)img', regTrig = true, snippetType = 'autosnippet' },
+    fmta(
+      [[
+      \begin{figure}[!h]
+        \centering
+        \includegraphics[width=0.5\textwidth]{figures/<>.png}
+      \end{figure}
+      ]],
       {
         i(1),
       }
