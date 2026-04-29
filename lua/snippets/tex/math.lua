@@ -8,15 +8,6 @@ end
 
 return {
   s(
-    { trig = '$$', regTrig = true, snippetType = 'autosnippet' },
-    fmta('<>$<>$', {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      d(1, get_visual),
-    })
-  ),
-  s(
     { trig = '\\min', condition = in_mathzone, snippetType = 'autosnippet' },
     fmta('\\min_{<>}\\left\\{<>\\right\\}', {
       i(1),
