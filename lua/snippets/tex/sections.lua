@@ -33,7 +33,7 @@ return {
   ),
 
   s(
-    { trig = '^;##$# ', regTrig = true, snippetType = 'autosnippet' },
+    { trig = '^;#### ', regTrig = true, snippetType = 'autosnippet' },
     fmt(
       '\\paragraph{<>}',
       {
