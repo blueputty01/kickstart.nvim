@@ -69,7 +69,7 @@ return {
   s({ trig = '>=', condition = in_mathzone, snippetType = 'autosnippet' }, t '\\geq'),
   s(
     { trig = ';te', condition = in_mathzone, snippetType = 'autosnippet' },
-    fmta('\\textrm{<>}', {
+    fmta('\\text{<>}', {
       i(1),
     })
   ),
