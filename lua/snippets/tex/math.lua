@@ -1,5 +1,5 @@
-local helpers = require 'utils.luasnip'
-local get_visual = helpers.get_visual
+-- local helpers = require 'utils.luasnip'
+-- local get_visual = helpers.get_visual
 
 local in_mathzone = function()
   -- The `in_mathzone` function requires the VimTeX plugin
@@ -7,6 +7,7 @@ local in_mathzone = function()
 end
 
 return {
+  s({ trig = '*', condition = in_mathzone, snippetType = 'autosnippet' }, fmta('\\cdot', {})),
   s(
     { trig = '\\min', condition = in_mathzone, snippetType = 'autosnippet' },
     fmta('\\min_{<>}\\left\\{<>\\right\\}', {
@@ -56,6 +57,12 @@ return {
   s(
     { trig = ';}', snippetType = 'autosnippet' },
     fmta('\\{<>\\}', {
+      i(1),
+    })
+  ),
+  s(
+    { trig = ';T', snippetType = 'autosnippet' },
+    fmta('\\Theta(<>)', {
       i(1),
     })
   ),

@@ -1,3 +1,6 @@
+local helpers = require 'utils.luasnip'
+local get_visual = helpers.get_visual
+
 return {
   -- The same equation snippet, using LuaSnip's fmt function.
   -- The snippet is not shorter, but it is more *human-readable*.
@@ -74,7 +77,7 @@ return {
     )
   ),
 
-  s({ trig = '^(%s*)%- ', regTrig = true, snippetType = 'autosnippet' }, t '\\item'),
+  s({ trig = '^(%s*)%- ', regTrig = true, snippetType = 'autosnippet' }, t '\\item '),
 
   s(
     { trig = '^(%s*)``py', regTrig = true, snippetType = 'autosnippet' },
@@ -95,11 +98,34 @@ return {
     { trig = '^(%s*)img', regTrig = true, snippetType = 'autosnippet' },
     fmta(
       [[
-      \begin{figure}[!h]
+      \begin{figure}[H]
         \centering
         \includegraphics[width=0.5\textwidth]{figures/<>.png}
+        \caption{<>}
       \end{figure}
       ]],
+      {
+        i(1),
+        i(2),
+      }
+    )
+  ),
+
+  s(
+    { trig = ';f', snippetType = 'autosnippet' },
+    fmta('\\footnote{<>}', {
+      d(1, get_visual),
+    })
+  ),
+
+  s(
+    { trig = '^(%s*)the', regTrig = true, snippetType = 'autosnippet' },
+    fmta(
+      [[
+      \begin{theorem}
+          <>
+      \end{theorem}
+    ]],
       {
         i(1),
       }
