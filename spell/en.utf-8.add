@@ -6,6 +6,9 @@ nvim
 config
 gitignore
 Architected
-Edmunds
 Karp
 Fulkerson
+Eulerian
+Christofides
+Edmonds
+Deepfake
