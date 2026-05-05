@@ -7,7 +7,6 @@ local in_mathzone = function()
 end
 
 return {
-  s({ trig = '*', condition = in_mathzone, snippetType = 'autosnippet' }, fmta('\\cdot', {})),
   s(
     { trig = '\\min', condition = in_mathzone, snippetType = 'autosnippet' },
     fmta('\\min_{<>}\\left\\{<>\\right\\}', {
@@ -80,11 +79,18 @@ return {
       i(1),
     })
   ),
+  s({ trig = '...', condition = in_mathzone, snippetType = 'autosnippet' }, fmta('\\cdots', {})),
   s(
     { trig = ';op', condition = in_mathzone, snippetType = 'autosnippet' },
     fmta('\\operatorname{<>}(<>)', {
       i(1),
       i(2),
+    })
+  ),
+  s(
+    { trig = ';ol', condition = in_mathzone, snippetType = 'autosnippet' },
+    fmta('\\overline{<>}', {
+      i(1),
     })
   ),
   s({ trig = '%^th', condition = in_mathzone, snippetType = 'autosnippet' }, t '^\\text{th}'),

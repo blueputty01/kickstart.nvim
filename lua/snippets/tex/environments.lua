@@ -34,6 +34,36 @@ return {
       }
     )
   ),
+  s(
+    { trig = '^(%s*)tc', regTrig = true, snippetType = 'autosnippet' },
+    fmta(
+      [[
+      \begin{<>}{<>}{}
+          <>
+      \end{<>}
+    ]],
+      {
+        i(1),
+        i(2),
+        i(3),
+        rep(1),
+      }
+    )
+  ),
+  s(
+    { trig = '^(%s*)defn', regTrig = true, snippetType = 'autosnippet' },
+    fmta(
+      [[
+      \begin{defn}{<>}{}
+          <>
+      \end{defn}
+    ]],
+      {
+        i(1),
+        i(2),
+      }
+    )
+  ),
 
   s(
     { trig = '^(%s*)cases', regTrig = true, snippetType = 'autosnippet' },
