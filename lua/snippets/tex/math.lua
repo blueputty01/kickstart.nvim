@@ -79,6 +79,18 @@ return {
       i(1),
     })
   ),
+  s(
+    { trig = ';mb', condition = in_mathzone, snippetType = 'autosnippet' },
+    fmta('\\mathbb{<>}', {
+      i(1),
+    })
+  ),
+  s(
+    { trig = ';mc', condition = in_mathzone, snippetType = 'autosnippet' },
+    fmta('\\mathcal{<>}', {
+      i(1),
+    })
+  ),
   s({ trig = '...', condition = in_mathzone, snippetType = 'autosnippet' }, fmta('\\cdots', {})),
   s(
     { trig = ';op', condition = in_mathzone, snippetType = 'autosnippet' },
