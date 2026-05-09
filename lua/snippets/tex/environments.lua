@@ -142,6 +142,25 @@ return {
   ),
 
   s(
+    { trig = '^;table', regTrig = true, snippetType = 'autosnippet' },
+    fmta(
+      [[
+      \begin{table}[H]
+		\centering
+		\begin{tabular}{|<>|}
+			\hline
+			<>\\ \hline
+		\end{tabular}
+	\end{table}
+      ]],
+      {
+        i(1),
+        i(2),
+      }
+    )
+  ),
+
+  s(
     { trig = ';f', snippetType = 'autosnippet' },
     fmta('\\footnote{<>}', {
       d(1, get_visual),
